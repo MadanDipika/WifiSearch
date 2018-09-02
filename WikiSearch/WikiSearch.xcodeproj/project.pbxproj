@@ -13,6 +13,10 @@
 		9A8F446E213AB9B900241E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8F446D213AB9B900241E4A /* Assets.xcassets */; };
 		9A8F4471213AB9B900241E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8F446F213AB9B900241E4A /* LaunchScreen.storyboard */; };
 		9A8F447C213ABA5A00241E4A /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F447B213ABA5A00241E4A /* ResultTableViewCell.swift */; };
+		9A8F447F213ABE5D00241E4A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F447E213ABE5D00241E4A /* NetworkManager.swift */; };
+		9A8F4485213AC5F100241E4A /* WikipediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F4484213AC5F100241E4A /* WikipediaManager.swift */; };
+		9A8F4487213ADC0200241E4A /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F4486213ADC0200241E4A /* CachedImageView.swift */; };
+		9A8F448A213B23F400241E4A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F4489213B23F400241E4A /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		9A8F4470213AB9B900241E4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A8F4472213AB9B900241E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A8F447B213ABA5A00241E4A /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		9A8F447E213ABE5D00241E4A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9A8F4484213AC5F100241E4A /* WikipediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaManager.swift; sourceTree = "<group>"; };
+		9A8F4486213ADC0200241E4A /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
+		9A8F4489213B23F400241E4A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,8 @@
 		9A8F4465213AB9B800241E4A /* WikiSearch */ = {
 			isa = PBXGroup;
 			children = (
+				9A8F4480213ABEDE00241E4A /* WikipediaHandler */,
+				9A8F447D213ABE0900241E4A /* NetworkHandler */,
 				9A8F447A213AB9FD00241E4A /* Controller */,
 				9A8F4479213AB9F700241E4A /* View */,
 				9A8F4478213AB9F100241E4A /* Model */,
@@ -77,6 +87,7 @@
 		9A8F4479213AB9F700241E4A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A8F4486213ADC0200241E4A /* CachedImageView.swift */,
 				9A8F446A213AB9B800241E4A /* Main.storyboard */,
 				9A8F447B213ABA5A00241E4A /* ResultTableViewCell.swift */,
 			);
@@ -89,6 +100,23 @@
 				9A8F4468213AB9B800241E4A /* SearchViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9A8F447D213ABE0900241E4A /* NetworkHandler */ = {
+			isa = PBXGroup;
+			children = (
+				9A8F447E213ABE5D00241E4A /* NetworkManager.swift */,
+				9A8F4489213B23F400241E4A /* CacheManager.swift */,
+			);
+			path = NetworkHandler;
+			sourceTree = "<group>";
+		};
+		9A8F4480213ABEDE00241E4A /* WikipediaHandler */ = {
+			isa = PBXGroup;
+			children = (
+				9A8F4484213AC5F100241E4A /* WikipediaManager.swift */,
+			);
+			path = WikipediaHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,9 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8F447F213ABE5D00241E4A /* NetworkManager.swift in Sources */,
+				9A8F4485213AC5F100241E4A /* WikipediaManager.swift in Sources */,
 				9A8F4469213AB9B800241E4A /* SearchViewController.swift in Sources */,
 				9A8F447C213ABA5A00241E4A /* ResultTableViewCell.swift in Sources */,
+				9A8F4487213ADC0200241E4A /* CachedImageView.swift in Sources */,
 				9A8F4467213AB9B800241E4A /* AppDelegate.swift in Sources */,
+				9A8F448A213B23F400241E4A /* CacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

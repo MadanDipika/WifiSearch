@@ -9,26 +9,24 @@
 import UIKit
 
 class ResultTableViewCell: UITableViewCell {
-    @IBOutlet var resultImageView: UIImageView!
+   
+   
+    @IBOutlet var resultImageView: CachedImageView!
     @IBOutlet var title: UILabel!
     @IBOutlet var subtitle: UILabel!
     
     private var result: Result? = nil
     
     func fillResult(_ result: Result?){
-        // guard let result = result else { return }
-        
+        guard let result = result else { return }
         self.result = result
-        if let thumbnailImageURL = result?.thumbnailImageURL{
-            self.resultImageView?.image = UIImage(named: "placeHolder")
-        }
-        
-        self.resultImageView?.image = UIImage(named: "placeHolder")
-        title?.text = result?.title ?? "Test"
-        subtitle?.text = result?.subtitle ?? "Testing"
+
+        resultImageView?.loadImage(atURL: result.thumbnailImageURL)
+        title?.text = result.title ?? ""
+        subtitle?.text = result.subtitle ?? ""
     }
     
     override func prepareForReuse() {
-        //self.resultImageView?.image = nil
+        self.resultImageView?.image = nil
     }
 }

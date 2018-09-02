@@ -18,6 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="FDu-WF-8M3">
+                            <rect key="frame" x="0.0" y="138" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="FLC-1S-BrD">
+                                    <rect key="frame" x="169" y="4" width="37" height="37"/>
+                                    <color key="color" red="0.62985751300000004" green="0.2965208043" blue="0.3348643208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="FLC-1S-BrD" firstAttribute="centerX" secondItem="FDu-WF-8M3" secondAttribute="centerX" id="JMr-0m-3ul"/>
+                                <constraint firstItem="FLC-1S-BrD" firstAttribute="centerY" secondItem="FDu-WF-8M3" secondAttribute="centerY" id="mRV-NN-pND"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ResultTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultTableViewCell" rowHeight="110" id="8TY-02-Ila" customClass="ResultTableViewCell" customModule="WikiSearch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="110"/>
@@ -26,7 +41,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n20-YF-aCZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n20-YF-aCZ" customClass="CachedImageView" customModule="WikiSearch" customModuleProvider="target">
                                             <rect key="frame" x="4" y="4" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="kFC-hJ-tta"/>
