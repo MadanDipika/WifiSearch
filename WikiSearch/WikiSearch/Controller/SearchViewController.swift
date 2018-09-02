@@ -27,9 +27,10 @@ class SearchViewController: UITableViewController{
     private var searchString: String? = nil
     private var delegate: SearchViewControllerDelegate? = nil
     private var isLoading: Bool = false
+    private var pendingSearchTask: DispatchWorkItem? = nil
     private var isFulfillingSearchConditions: Bool{
         get{
-            if let searchText = searchController.searchBar.text, searchText.count > 3{
+            if let searchText = searchController.searchBar.text, searchText != searchString, searchText.count > 0{
                 searchString = searchText
                 return true
             }else{
@@ -61,7 +62,9 @@ class SearchViewController: UITableViewController{
             self.searchController.searchBar.placeholder = SearchViewControllerConstants.Messages.searchDefaultPlaceholder
             self.searchString = nil
         }))
-        self.present(alert, animated: true, completion: nil)
+        self.dismiss(animated: false) {[weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,27 +103,37 @@ extension SearchViewController{
 
 extension SearchViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
-        if isFulfillingSearchConditions{
-            guard var searchString = searchString else{return}
-    
-            // search call
-            delegate?.search(forString: searchString, withSearchLimit: SearchViewControllerConstants.SearchLimit, completion: {[weak self] (results, error) in
-                DispatchQueue.main.async {
-                    if error != nil || results?.count == 0{
-                        self?.showError(error: error ?? "No Results Found")
-                    }else{
-                        guard let results = results else{return}
-                        self?.results = results
-                    }
-                    self?.tableView?.reloadData()
-                }
-            })
+        if self.isFulfillingSearchConditions{
+            pendingSearchTask?.cancel()
+            let newSearckTask = DispatchWorkItem{ [weak self] in
+                self?.performSearch()
+            }
             
-            self.results?.removeAll()
-            self.tableView?.reloadData()
+            pendingSearchTask = newSearckTask
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: newSearckTask)
         }
     }
+    
+    func performSearch() {
+        guard let searchString = self.searchString else{return}
+        
+        // search call
+        self.delegate?.search(forString: searchString, withSearchLimit: SearchViewControllerConstants.SearchLimit, completion: {[weak self] (results, error) in
+            DispatchQueue.main.async {
+                if error != nil || results?.count == 0{
+                    self?.showError(error: error ?? "No Results Found")
+                }else{
+                    guard let results = results else{return}
+                    self?.results = results
+                }
+                self?.tableView?.reloadData()
+            }
+        })
+        self.results?.removeAll()
+        self.tableView?.reloadData()
+    }
 }
+
 extension SearchViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchController.isActive = false
