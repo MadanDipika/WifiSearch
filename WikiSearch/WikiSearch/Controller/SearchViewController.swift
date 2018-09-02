@@ -54,6 +54,7 @@ class SearchViewController: UITableViewController{
         
         self.tableView.separatorStyle = .none
         self.tableView.separatorColor = .clear
+        self.tableView.tableFooterView?.isHidden = true
     }
     
     fileprivate func showError(error: String) {
@@ -72,19 +73,22 @@ class SearchViewController: UITableViewController{
             detailViewController.url = self.results?[indexPath.row].wikiPageURL
         }
     }
+    
+    private func reloadTableView(show: Bool){
+        if show{
+        self.results?.removeAll()
+        }
+        
+        self.tableView.tableFooterView?.isHidden = !show
+        self.tableView?.reloadData()
+    }
 }
 
 //Mark: UITableViewDataSource and UITableViewDelegate conformation
 extension SearchViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let result = results{
-            self.tableView.tableFooterView?.isHidden = true
-            return result.count
-        }else{
-            self.tableView.tableFooterView?.isHidden = false
-            return 0
-        }
+        return results?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,11 +130,11 @@ extension SearchViewController: UISearchResultsUpdating{
                     guard let results = results else{return}
                     self?.results = results
                 }
-                self?.tableView?.reloadData()
+                self?.reloadTableView(show: false)
             }
         })
-        self.results?.removeAll()
-        self.tableView?.reloadData()
+        
+        self.reloadTableView(show: true)
     }
 }
 
