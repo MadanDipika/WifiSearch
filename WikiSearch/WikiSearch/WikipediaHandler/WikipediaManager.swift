@@ -59,31 +59,31 @@ class WikipediaManager: SearchViewControllerDelegate {
         return url
     }
     
-    private func parseSearchResult(_ data: Data?) -> [Result]?{
+    private func parseSearchResult(_ data: Data?) -> [WikipediaResult]?{
         guard let data = data else{return nil}
         
         do {
             guard let resultsDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: AnyObject],
                 let query = resultsDictionary[WikipediaConstants.query] as? [String: AnyObject], let pages = query[WikipediaConstants.pages] as? [AnyObject] else {return nil}
             
-            var results = [Result]()
+            var wikipediaResults = [WikipediaResult]()
             
             for page in pages{
-                var result = Result()
+                var wikipediaResult = WikipediaResult()
                 
-                result.title = page[WikipediaConstants.title] as? String
+                wikipediaResult.title = page[WikipediaConstants.title] as? String
                 
                 if let thumbnail = page[WikipediaConstants.thumbnail] as? [String: AnyObject], let thumbnailString = thumbnail[WikipediaConstants.source] as? String, let thumbnailImageURL = URL(string: thumbnailString){
-                    result.thumbnailImageURL = thumbnailImageURL
+                    wikipediaResult.thumbnailImageURL = thumbnailImageURL
                 }
                 
                 if let terms = page[WikipediaConstants.terms] as? [String: AnyObject], let descriptions = terms[WikipediaConstants.description] as? [String]{
-                    result.subtitle = descriptions[0]
+                    wikipediaResult.subtitle = descriptions[0]
                 }
                 
-                results.append(result)
+                wikipediaResults.append(wikipediaResult)
             }
-            return results
+            return wikipediaResults
         } catch _ {
             return nil
         }

@@ -7,13 +7,6 @@
 //
 
 import UIKit
-struct Result{
-    var thumbnailImageURL: URL?
-    var highResImageURL: URL?
-    var wikiPageURL: URL?
-    var title: String?
-    var subtitle: String? 
-}
 
 struct SearchViewControllerConstants {
     static let cellIdentifier: String = "ResultTableViewCell"
@@ -69,6 +62,12 @@ class SearchViewController: UITableViewController{
             self.searchString = nil
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? SearchDetailViewController, let cell = sender as? ResultTableViewCell, let indexPath = self.tableView.indexPath(for: cell){
+            detailViewController.url = self.results?[indexPath.row].wikiPageURL
+        }
     }
 }
 

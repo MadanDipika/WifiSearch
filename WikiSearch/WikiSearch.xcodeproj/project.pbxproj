@@ -17,6 +17,9 @@
 		9A8F4485213AC5F100241E4A /* WikipediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F4484213AC5F100241E4A /* WikipediaManager.swift */; };
 		9A8F4487213ADC0200241E4A /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F4486213ADC0200241E4A /* CachedImageView.swift */; };
 		9A8F448A213B23F400241E4A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F4489213B23F400241E4A /* CacheManager.swift */; };
+		9A8F448C213BDCE900241E4A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F448B213BDCE900241E4A /* Result.swift */; };
+		9A8F448E213BDDB700241E4A /* WikipediaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F448D213BDDB700241E4A /* WikipediaResult.swift */; };
+		9A8F4490213BE04A00241E4A /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F448F213BE04A00241E4A /* SearchDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		9A8F4484213AC5F100241E4A /* WikipediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaManager.swift; sourceTree = "<group>"; };
 		9A8F4486213ADC0200241E4A /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		9A8F4489213B23F400241E4A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		9A8F448B213BDCE900241E4A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		9A8F448D213BDDB700241E4A /* WikipediaResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaResult.swift; sourceTree = "<group>"; };
+		9A8F448F213BE04A00241E4A /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 		9A8F4478213AB9F100241E4A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9A8F448B213BDCE900241E4A /* Result.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				9A8F4468213AB9B800241E4A /* SearchViewController.swift */,
+				9A8F448F213BE04A00241E4A /* SearchDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -115,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				9A8F4484213AC5F100241E4A /* WikipediaManager.swift */,
+				9A8F448D213BDDB700241E4A /* WikipediaResult.swift */,
 			);
 			path = WikipediaHandler;
 			sourceTree = "<group>";
@@ -192,10 +201,13 @@
 			files = (
 				9A8F447F213ABE5D00241E4A /* NetworkManager.swift in Sources */,
 				9A8F4485213AC5F100241E4A /* WikipediaManager.swift in Sources */,
+				9A8F448E213BDDB700241E4A /* WikipediaResult.swift in Sources */,
 				9A8F4469213AB9B800241E4A /* SearchViewController.swift in Sources */,
 				9A8F447C213ABA5A00241E4A /* ResultTableViewCell.swift in Sources */,
 				9A8F4487213ADC0200241E4A /* CachedImageView.swift in Sources */,
+				9A8F4490213BE04A00241E4A /* SearchDetailViewController.swift in Sources */,
 				9A8F4467213AB9B800241E4A /* AppDelegate.swift in Sources */,
+				9A8F448C213BDCE900241E4A /* Result.swift in Sources */,
 				9A8F448A213B23F400241E4A /* CacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
